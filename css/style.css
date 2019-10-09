@@ -8,9 +8,8 @@ body{
 
 .newsimg {
 
-    width : 300px;
+    width : 330px;
     height: 170px;
-    margin: 10px;
 }
 
 .main {
@@ -54,3 +53,19 @@ button {
 }
 
 
+.navbar {
+    position: relative;
+}
+
+.logo-center {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
+
+::-webkit-scrollbar {width: 12px; height: 12px;  }
+::-webkit-scrollbar-button:start:decrement, 
+::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; background: url() rgb(46, 46, 46);}
+::-webkit-scrollbar-track {     background: rgb(255, 255, 255); }
+::-webkit-scrollbar-thumb {  background: rgb(46, 46, 46);  }
