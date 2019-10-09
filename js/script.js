@@ -4,7 +4,7 @@ let pageNum = 1;
 
 
 async function fetchNews(){ //async, await 세트
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=2cbf7ab8e796484b953c69b18bdf4386&page=${pageNum}`; //api 주소 부르기
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=2cbf7ab8e796484b953c69b18bdf4386&page=${pageNum}`; //api 주소 부르기
     let result = await fetch(url); //결과 변수에 api 불러오기 - api가 로드될때까지 기다렸다가 완료되면 result 에 넣어줌
     let data = await result.json(); //api url을 객체로 저장
     news = data.articles; //news배열에 api 객체들 중 articles 배열만 저장
@@ -43,5 +43,19 @@ function renderNews(arr) {
     document.getElementById("main").innerHTML= html; //main에 map 해서 찾아온 값들을 넣은 html 을 출력
 }
 
+const addScript = language => {
+    var s = document.createElement("script");
+    s.setAttribute(
+      "src",
+      `https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/${language}.js`
+    );
+    document.body.appendChild(s);
+  };
+  
+if (window.clientInformation.language == "ko-KR") {
+    addScript("ko");
+} else if (window.clientInformation.language == "vi") {
+    addScript("vi");
+}
 
 fetchNews(); //fetch 함수 부르기
