@@ -9,11 +9,13 @@ async function fetchNews(){ //async, await 세트
     let data = await result.json(); //api url을 객체로 저장
     news = data.articles; //news배열에 api 객체들 중 articles 배열만 저장
     newsArticles= newsArticles.concat(news);
-    
+    const publishers = newsArticles.map(article => article.source.name)
+    console.log('hansol mask', publishers)
 
+    
     renderNews(newsArticles); //news(articles)배열을 렌더 함수로 보내면서 렌더 함수 실행시키기
     document.getElementById("total").innerHTML = `No.of Articles : ${newsArticles.length}`
-
+    console.log(newsArticles);
     pageNum++;
     if(pageNum>2){
         document.getElementById("load-more-btn").innerHTML = "No More News To Show";
@@ -34,7 +36,7 @@ function renderNews(arr) {
                     <p id="content" class="card-text">${article.description}</p>
                     <p id="pubished" class="card-text"><small class="text-muted">${moment(article.publishedAt).fromNow()}</small></p>
                     <p id="source" class="card-text">${article.source.name}</p>
-                    <a href="${article.url}" class="btn btn-dark">Read more</a>
+                    <a href="${article.url}" target="_blank" class="btn btn-dark">Read more</a>
             </div>
         </div>
         `
