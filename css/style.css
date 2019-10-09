@@ -1,3 +1,7 @@
+body{
+    background-image: url("/bg.jpg");
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -29,6 +33,5 @@ h3 {
     font-family: 'Playfair Display', serif;
     font-family: 'Noto Serif', serif;
     font-family: 'Libre Baskerville', serif;
-    font-size: 30px;
-    margin-right: 22%;
+    font-size: 20px;
 }
