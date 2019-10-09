@@ -2,14 +2,11 @@ body{
     background-image: url("/bg.jpg");
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    width: 330px;
-
+.bg-light {
+    background-color: #f8f9faa2!important;
 }
 
-img {
+.newsimg {
 
     width : 300px;
     height: 170px;
@@ -35,3 +32,25 @@ h3 {
     font-family: 'Libre Baskerville', serif;
     font-size: 20px;
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    background-color : #f8f9fa98!important;
+}
+.text-center {
+    text-align: center!important;
+}
+
+button {
+    margin: 30px;
+}
+
+#topbtn {
+    position: fixed;
+    bottom: 25px;
+    right: 40px;
+}
+
+

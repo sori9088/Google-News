@@ -26,15 +26,15 @@ function renderNews(arr) {
 
         return `
         <div class="card text-center">
-            <div class="image">
-            <img src="${article.urlToImage}">
+            <div class="card-img-top">
+            <img class="newsimg" src="${article.urlToImage}">
             </div>
-            <div class="text">
-                    <h3 id="title">${article.title}</h3>
-                    <p id="content">${article.description}</p>
-                    <p id="pubished">${moment(article.publishedAt).fromNow()}</p>
-                    <p id="source">${article.source.name}</p>
-                    <a href="${article.url}" id="readmore">Read more</a>
+            <div class="card-body">
+                    <h3 id="title" class="card-title">${article.title}</h3>
+                    <p id="content" class="card-text">${article.description}</p>
+                    <p id="pubished" class="card-text"><small class="text-muted">${moment(article.publishedAt).fromNow()}</small></p>
+                    <p id="source" class="card-text">${article.source.name}</p>
+                    <a href="${article.url}" class="btn btn-dark">Read more</a>
             </div>
         </div>
         `
@@ -56,6 +56,8 @@ if (window.clientInformation.language == "ko-KR") {
     addScript("ko");
 } else if (window.clientInformation.language == "vi") {
     addScript("vi");
+} else {
+    addScript("us");
 }
 
 fetchNews(); //fetch 함수 부르기
