@@ -14,11 +14,13 @@ async function fetchNews(){ //async, await 세트
     renderNews(newsArticles); //news(articles)배열을 렌더 함수로 보내면서 렌더 함수 실행시키기
     document.getElementById("total").innerHTML = `No.of Articles : ${newsArticles.length}`
     console.log(newsArticles);
-    pageNum++;
-    if(pageNum>2){
-        document.getElementById("load-more-btn").innerHTML = "No More News To Show";
-
+    if (category= ''){
+        pageNum++;
+        if(pageNum>2){
+            document.getElementById("load-more-btn").innerHTML = "No More News To Show";
+        }
     }
+  
 }
 
 function renderNews(arr) {
@@ -79,6 +81,7 @@ if (window.clientInformation.language == "ko-KR") {
 } else {
     addScript("en");
 }
+
 
 fetchNews(); //fetch 함수 부르기
 

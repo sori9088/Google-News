@@ -45,6 +45,13 @@ function renderNews(arr) {
     document.getElementById("main").innerHTML= html; //main에 map 해서 찾아온 값들을 넣은 html 을 출력
 }
 
+function kkk(cate){
+    category=cate;
+    newsArticles=[];
+    fetchNews();
+}
+
+
 const addScript = language => {
     var s = document.createElement("script");
     s.setAttribute(
