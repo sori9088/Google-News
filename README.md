@@ -2,7 +2,7 @@
 
 Created with love by: `HANSOL PARK`
   
-View online at: `https://sharp-meninsky-e582f1.netlify.com`
+View online at: `https://newsol.netlify.com`
   
 One or two sentence summary of your project. 
 

@@ -47,6 +47,7 @@ function renderNews(arr) {
 
 function kkk(cate){
     category=cate;
+    news=[];
     newsArticles=[];
     fetchNews();
 }
