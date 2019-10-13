@@ -7,11 +7,9 @@ async function fetchNews(){ //async, await 세트
     let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=2cbf7ab8e796484b953c69b18bdf4386&page=${pageNum}`; //api 주소 부르기
     let result = await fetch(url); //결과 변수에 api 불러오기 - api가 로드될때까지 기다렸다가 완료되면 result 에 넣어줌
     let data = await result.json(); //api url을 객체로 저장
+    console.log(data)
     news = data.articles; //news배열에 api 객체들 중 articles 배열만 저장
     newsArticles= newsArticles.concat(news);
-    const publishers = newsArticles.map(article => article.source.name)
-    console.log('hansol mask', publishers)
-
     
     renderNews(newsArticles); //news(articles)배열을 렌더 함수로 보내면서 렌더 함수 실행시키기
     document.getElementById("total").innerHTML = `No.of Articles : ${newsArticles.length}`
@@ -19,7 +17,13 @@ async function fetchNews(){ //async, await 세트
     pageNum++;
     if(pageNum>2){
         document.getElementById("load-more-btn").innerHTML = "No More News To Show";
+    } else {
+        document.getElementById("load-more-btn").innerHTML = "Load More";
     }
+
+    let sources = newsArticles.map(article => article.source.name);
+    countRepeatSources(sources);
+
 }
 
 function renderNews(arr) {
@@ -45,10 +49,44 @@ function renderNews(arr) {
     document.getElementById("main").innerHTML= html; //main에 map 해서 찾아온 값들을 넣은 html 을 출력
 }
 
+function countRepeatSources(arr){
+    let countRepeat= {};
+
+    for(let i=0; i<arr.length; i++){
+        let source = arr[i];
+        if(countRepeat[source] == null){
+            countRepeat[source] = 0;
+        }
+        countRepeat[source] = countRepeat[source]+1;
+    }
+    console.log("repeat count",countRepeat)
+
+    let keys= Object.keys(countRepeat);
+    console.log(keys)
+
+    document.getElementById("publishers").innerHTML = keys.map(key => {
+        return `
+        <input type = "checkbox" id="${key}" onchange="filterBySource('${key}')"> ${key}(${countRepeat[key]})
+        `
+    }).join('&nbsp;');
+}
+
+function filterBySource(id){
+    if(document.getElementById(id).checked){
+        let filteredlist = newsArticles.filter(article => article.source.name == id);
+        renderNews(filteredlist);
+    }else{
+        renderNews(newsArticles);
+    }
+
+
+}
+
 function kkk(cate){
     category=cate;
     news=[];
     newsArticles=[];
+    pageNum = 1;
     fetchNews();
 }
 
